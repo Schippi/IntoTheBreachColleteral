@@ -46,6 +46,14 @@ local function init(self)
 	require(self.scriptPath.."pawns")
 
 	
+	
+	local oldMissionStartDeployment = Mission.StartDeployment;
+
+	function Mission:StartDeployment()
+		GAME.Schippi_Powering_Shot_Pawns = {};
+		Schippi_Powering_Shot:adjustDmg();
+		oldMissionStartDeployment(self);
+	end;
 end
 
 local oldMissionStartDeployment = Mission.StartDeployment;
